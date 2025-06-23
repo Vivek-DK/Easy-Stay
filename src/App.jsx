@@ -35,7 +35,7 @@ function App() {
                 path="/host/add-property" 
                 element={
                   <ProtectedRoute>
-                    <AddPropertyPage />
+                    <AddPropertyPage/>
                   </ProtectedRoute>
                 } 
               />

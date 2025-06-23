@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 
 const DashboardPage = () => {
   const { user } = useAuth();
-  const { properties, bookings, deleteProperty } = useData();
+  const { properties, bookings, deleteProperty,updateProperty } = useData();
   const [activeTab, setActiveTab] = useState('bookings');
 
   const userProperties = properties.filter(p => p.hostId === user?.id);
@@ -239,10 +239,6 @@ const DashboardPage = () => {
                             <Eye className="h-4 w-4" />
                             <span>View</span>
                           </Link>
-                          <button className="flex items-center space-x-1 text-neutral-600 hover:text-secondary-500 transition-colors">
-                            <Edit className="h-4 w-4" />
-                            <span>Edit</span>
-                          </button>
                           <button
                             onClick={() => handleDeleteProperty(property.id)}
                             className="flex items-center space-x-1 text-neutral-600 hover:text-red-500 transition-colors"

@@ -149,9 +149,190 @@ const AddPropertyPage = () => {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-sm p-8 space-y-8">
-          {/* Sections from Basic Info to Submit are unchanged and JSX-friendly */}
-          {/* ... [KEEP REST OF YOUR JSX CODE HERE] ... */}
-          {/* Everything else stays the same because it's already valid JSX */}
+          <div>
+            <label className="block text-sm font-medium text-neutral-700 mb-1">Title</label>
+            <input
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleInputChange}
+              required
+              className="w-full border border-neutral-300 rounded-md px-4 py-2"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-neutral-700 mb-1">Description</label>
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleInputChange}
+              required
+              rows="4"
+              className="w-full border border-neutral-300 rounded-md px-4 py-2"
+            />
+          </div>
+
+          {/* Address */}
+          <div className="grid md:grid-cols-3 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-neutral-700 mb-1">Address</label>
+              <input
+                type="text"
+                name="address"
+                value={formData.address}
+                onChange={handleInputChange}
+                required
+                className="w-full border border-neutral-300 rounded-md px-4 py-2"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-neutral-700 mb-1">City</label>
+              <input
+                type="text"
+                name="city"
+                value={formData.city}
+                onChange={handleInputChange}
+                required
+                className="w-full border border-neutral-300 rounded-md px-4 py-2"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-neutral-700 mb-1">Country</label>
+              <input
+                type="text"
+                name="country"
+                value={formData.country}
+                onChange={handleInputChange}
+                required
+                className="w-full border border-neutral-300 rounded-md px-4 py-2"
+              />
+            </div>
+          </div>
+
+          {/* Property Details */}
+          <div className="grid md:grid-cols-4 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-neutral-700 mb-1">Price (per night)</label>
+              <input
+                type="number"
+                name="price"
+                value={formData.price}
+                onChange={handleInputChange}
+                required
+                className="w-full border border-neutral-300 rounded-md px-4 py-2"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-neutral-700 mb-1">Bedrooms</label>
+              <input
+                type="number"
+                name="bedrooms"
+                value={formData.bedrooms}
+                onChange={handleInputChange}
+                required
+                className="w-full border border-neutral-300 rounded-md px-4 py-2"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-neutral-700 mb-1">Bathrooms</label>
+              <input
+                type="number"
+                name="bathrooms"
+                value={formData.bathrooms}
+                onChange={handleInputChange}
+                required
+                className="w-full border border-neutral-300 rounded-md px-4 py-2"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-neutral-700 mb-1">Max Guests</label>
+              <input
+                type="number"
+                name="maxGuests"
+                value={formData.maxGuests}
+                onChange={handleInputChange}
+                required
+                className="w-full border border-neutral-300 rounded-md px-4 py-2"
+              />
+            </div>
+          </div>
+
+          {/* Property Type */}
+          <div>
+            <label className="block text-sm font-medium text-neutral-700 mb-1">Property Type</label>
+            <select
+              name="propertyType"
+              value={formData.propertyType}
+              onChange={handleInputChange}
+              className="w-full border border-neutral-300 rounded-md px-4 py-2"
+            >
+              {propertyTypes.map((type) => (
+                <option key={type.id} value={type.id}>
+                  {type.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Amenities */}
+          <div>
+            <label className="block text-sm font-medium text-neutral-700 mb-2">Amenities</label>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+              {amenities.map((amenity) => (
+                <label key={amenity} className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    checked={selectedAmenities.includes(amenity)}
+                    onChange={() => handleAmenityToggle(amenity)}
+                  />
+                  <span className="text-sm text-neutral-700">{amenity}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Image URLs */}
+          <div>
+            <label className="block text-sm font-medium text-neutral-700 mb-2">Image URLs</label>
+            <div className="space-y-2">
+              {imageUrls.map((url, index) => (
+                <div key={index} className="flex items-center space-x-2">
+                  <input
+                    type="text"
+                    value={url}
+                    onChange={(e) => handleImageUrlChange(index, e.target.value)}
+                    className="w-full border border-neutral-300 rounded-md px-4 py-2"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => removeImageUrl(index)}
+                    className="text-red-500 hover:text-red-700"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={addImageUrl}
+                className="text-sm text-primary-600 hover:underline"
+              >
+                + Add another image
+              </button>
+            </div>
+          </div>
+
+          {/* Submit */}
+          <div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="bg-primary-500 text-white px-6 py-3 rounded-lg hover:bg-primary-600 transition-colors"
+            >
+              {isSubmitting ? 'Submitting...' : 'Submit Property'}
+            </button>
+          </div>
+
         </form>
       </div>
       <Footer />
