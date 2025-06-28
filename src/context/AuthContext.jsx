@@ -34,9 +34,9 @@ export const AuthProvider = ({ children }) => {
       const mockUser = {
         id: '1',
         email,
-        firstName: 'John',
-        lastName: 'Doe',
-        role: 'guest',
+        firstName: 'Vivek',
+        lastName: 'DK',
+        role: 'Client',
         createdAt: new Date().toISOString(),
       };
 
