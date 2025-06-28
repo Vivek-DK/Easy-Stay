@@ -54,7 +54,7 @@ const AuthPage = ({ type }) => {
         <div className="text-center">
           <Link to="/" className="flex items-center justify-center space-x-2 text-primary-500 hover:text-primary-600 transition-colors mb-8">
             <Home className="h-10 w-10" />
-            <span className="text-2xl font-bold">Airbnb</span>
+            <span className="text-2xl font-bold">Easy Stay</span>
           </Link>
           <h2 className="text-3xl font-bold text-neutral-900">
             {isLogin ? 'Welcome back' : 'Create your account'}
@@ -90,7 +90,7 @@ const AuthPage = ({ type }) => {
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
                       className="w-full pl-10 pr-4 py-3 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                      placeholder="John"
+                      placeholder="Vivek"
                     />
                   </div>
                 </div>
@@ -107,7 +107,7 @@ const AuthPage = ({ type }) => {
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
                       className="w-full pl-10 pr-4 py-3 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                      placeholder="Doe"
+                      placeholder="DK"
                     />
                   </div>
                 </div>
@@ -127,7 +127,7 @@ const AuthPage = ({ type }) => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                  placeholder="john@example.com"
+                  placeholder="vivek@example.com"
                 />
               </div>
             </div>
